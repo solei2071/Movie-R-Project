@@ -5,7 +5,8 @@
   "description": "A lightweight Letterboxd-style MVP (Node + Express + SQLite + vanilla JS)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
