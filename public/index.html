@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie R - Letterboxd MVP</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <h1>Movie R</h1>
+          <p>영화 기록·리뷰·평점</p>
+        </div>
+        <div id="userArea"></div>
+      </header>
+
+      <main class="layout">
+        <section class="card">
+          <div id="authArea">
+            <h2>로그인</h2>
+            <form id="loginForm" autocomplete="on">
+              <label>아이디 또는 이메일</label>
+              <input id="identifier" name="identifier" placeholder="username 또는 email" />
+              <label>비밀번호</label>
+              <input type="password" id="password" name="password" placeholder="••••••••" />
+              <div class="row">
+                <button type="submit">로그인</button>
+                <button type="button" id="toggleAuth">회원가입</button>
+              </div>
+            </form>
+
+            <form id="registerForm" autocomplete="on" class="hidden">
+              <label>닉네임</label>
+              <input id="regUsername" name="username" placeholder="username" />
+              <label>이메일</label>
+              <input id="regEmail" name="email" type="email" placeholder="you@example.com" />
+              <label>비밀번호</label>
+              <input type="password" id="regPassword" name="password" placeholder="6자 이상" />
+              <div class="row">
+                <button type="submit">회원가입</button>
+                <button type="button" id="toggleAuthBack">로그인으로</button>
+              </div>
+            </form>
+          </div>
+          <button id="logoutBtn" class="hidden">로그아웃</button>
+        </section>
+
+        <section class="card">
+          <h2>영화 목록</h2>
+          <div class="toolbar">
+            <input id="searchInput" placeholder="영화 제목 / 장르 검색" />
+            <button id="searchBtn">검색</button>
+            <button id="refreshBtn">새로고침</button>
+          </div>
+          <div class="toolbar">
+            <button id="searchExternalBtn">TMDB에서 검색</button>
+          </div>
+          <p id="movieCounter" class="muted"></p>
+          <div id="movieList" class="movie-grid"></div>
+          <p class="muted">TMDB 검색 결과</p>
+          <div id="externalSearchResults" class="movie-grid"></div>
+          <button id="addMovieToggle" class="ghost">영화 직접 추가</button>
+        </section>
+
+        <section class="card hidden" id="addMoviePanel">
+          <h2>새 영화 추가</h2>
+          <form id="addMovieForm">
+            <label>제목</label>
+            <input id="movieTitle" placeholder="예: 오펜하이머" />
+            <label>개봉 연도</label>
+            <input id="movieYear" type="number" min="1888" max="2050" placeholder="2026" />
+            <label>장르</label>
+            <input id="movieGenre" placeholder="드라마, 스릴러" />
+            <label>포스터 URL (선택)</label>
+            <input id="moviePoster" placeholder="https://..." />
+            <label>한 줄 설명</label>
+            <textarea id="movieDesc" rows="3" placeholder="영화 소개"></textarea>
+            <button type="submit">추가</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <div id="movieDetail" class="detail">
+            <p class="muted">영화를 선택하면 상세 정보가 보입니다.</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>내 활동</h2>
+          <h3>위시리스트</h3>
+          <div id="watchlistContainer" class="small-list"></div>
+          <h3>내 리뷰</h3>
+          <div id="myReviewList" class="small-list"></div>
+        </section>
+      </main>
+
+      <p id="status" class="status"></p>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
